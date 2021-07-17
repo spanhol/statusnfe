@@ -5,7 +5,14 @@
 	<artifactId>statusnfe</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-	<properties>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+    <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>14</maven.compiler.source>
 		<maven.compiler.target>14</maven.compiler.target>
@@ -17,5 +24,85 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.14.1</version>
 		</dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>avalon-framework-4.2.0</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>barcode4j-fop-ext-0.20.5-complete</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>barcode4j-fop-ext-0.20.5</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>barcode4j-fop-ext-complete</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>barcode4j-fop-ext</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>barcode4j-light</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>barcode4j-xgc</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>net.sf.barcode4j</groupId>
+	        <artifactId>barcode4j</artifactId>
+	        <version>2.1</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>commons-cli</groupId>
+	        <artifactId>commons-cli</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>eclipselink</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.google.guava</groupId>
+	        <artifactId>guava</artifactId>
+	        <version>18.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>javax.persistence_2.1.0.v201304241213</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>junit</groupId>
+	        <artifactId>junit</artifactId>
+	        <version>4.10</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.eclipse.persistence</groupId>
+	        <artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
+	        <version>2.5.2</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>postgresql-9.3-1102.jdbc41</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>unknown.binary</groupId>
+	        <artifactId>servlet-2.2</artifactId>
+	        <version>SNAPSHOT</version>
+	    </dependency>
 	</dependencies>
 </project>
