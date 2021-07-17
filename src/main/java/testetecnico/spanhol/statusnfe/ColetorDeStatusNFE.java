@@ -1,4 +1,4 @@
-package testetecnico.spanhol.statusnfe.servico;
+package testetecnico.spanhol.statusnfe;
 
 import java.io.IOException;
 import java.util.ArrayList;

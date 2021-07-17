@@ -1,7 +1,6 @@
 package testetecnico.spanhol.statusnfe;
 
 import testetecnico.spanhol.statusnfe.modelo.Autorizador;
-import testetecnico.spanhol.statusnfe.servico.ColetorDeStatusNFE;
 
 /**
  *
@@ -15,5 +14,6 @@ public class Main {
 		for (Autorizador autorizador : coletor.getAutorizadores()) {
 			System.out.println(autorizador);
 		}
+		
 	}
 }
