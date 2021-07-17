@@ -21,13 +21,7 @@ import javax.persistence.TemporalType;
  * @author span
  */
 @Entity
-@Table(name = "statusNFE")
-@NamedQueries({
-	@NamedQuery(name = "StatusNFE.findAll", query = "SELECT s FROM StatusNFE s"),
-	@NamedQuery(name = "StatusNFE.findById", query = "SELECT s FROM StatusNFE s WHERE s.id = :id"),
-	@NamedQuery(name = "StatusNFE.findByAutorizador", query = "SELECT s FROM StatusNFE s WHERE s.autorizador = :autorizador"),
-	@NamedQuery(name = "StatusNFE.findBySituacao", query = "SELECT s FROM StatusNFE s WHERE s.situacao = :situacao"),
-	@NamedQuery(name = "StatusNFE.findByDataAtualizacao", query = "SELECT s FROM StatusNFE s WHERE s.dataAtualizacao = :dataAtualizacao")})
+@Table(name = "statusnfe")
 public class StatusNFE implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -126,7 +120,7 @@ public class StatusNFE implements Serializable {
 
 	@Override
 	public String toString() {
-		return "testetecnico.spanhol.statusnfe.model.StatusNFE[ id=" + id + " ]";
+		return "testetecnico.spanhol.statusnfe.modelo.StatusNFE[ id=" + id + " ]";
 	}
 
 }

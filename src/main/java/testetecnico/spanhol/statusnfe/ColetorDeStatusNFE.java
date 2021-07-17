@@ -8,7 +8,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import testetecnico.spanhol.statusnfe.Main;
 import testetecnico.spanhol.statusnfe.modelo.Autorizador;
 import testetecnico.spanhol.statusnfe.modelo.ServicoColetado;
 
@@ -85,7 +84,7 @@ public class ColetorDeStatusNFE {
 				}
 			}
 		} catch (IOException ex) {
-			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ColetorDeStatusNFE.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
