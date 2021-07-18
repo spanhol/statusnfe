@@ -13,9 +13,9 @@ import testetecnico.spanhol.statusnfe.modelo.NFEStatus;
  */
 public interface NfeRepository extends CrudRepository<NFEStatus, Integer> {
 
-	@Query(value = " SELECT max(n.id) as id, n.autorizador, n.servico_id, n.situacao, s.nome, n.dt\n"
+	@Query(value = " SELECT max(n.id) as id, n.autorizador, n.servico_id, n.situacao, s.nome, max(n.dt)\n"
 			+ " FROM public.statusnfe n inner join servico s on s.id = n.servico_id\n"
-			+ " GROUP BY n.autorizador, n.servico_id, n.situacao, s.nome, n.dt\n"
+			+ " GROUP BY n.autorizador, n.servico_id, n.situacao, s.nome\n"
 			+ " ORDER BY n.autorizador ", nativeQuery = true)
 	List<NFEStatus> mostraAtual();
 
@@ -27,10 +27,10 @@ public interface NfeRepository extends CrudRepository<NFEStatus, Integer> {
 			+ "	ORDER BY n.autorizador", nativeQuery = true)
 	List<NFEStatus> mostraAtualByDate(@Param("de") Timestamp de, @Param("ate") Timestamp ate);
 
-	@Query(value = " SELECT max(n.id) as id, n.autorizador, n.servico_id, n.situacao, s.nome, n.dt\n"
+	@Query(value = " SELECT max(n.id) as id, n.autorizador, n.servico_id, n.situacao, s.nome, max(n.dt)\n"
 			+ " FROM public.statusnfe n inner join servico s on s.id = n.servico_id\n"
 			+ " WHERE autorizador = :autorizador\n"
-			+ " GROUP BY s.id, n.autorizador, n.servico_id, n.situacao, s.nome, n.dt\n"
+			+ " GROUP BY s.id, n.autorizador, n.servico_id, n.situacao, s.nome\n"
 			+ " ORDER BY s.id ", nativeQuery = true)
 	List<NFEStatus> mostraAtualDoEstado(@Param("autorizador") String estado);
 
