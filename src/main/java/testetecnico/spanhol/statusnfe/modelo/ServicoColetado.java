@@ -11,20 +11,24 @@ public class ServicoColetado {
 	public static final String VERMELHOR = "VERMELHOR";
 	public static final String BLANK = "";
 
-	String nome;
 	String disponibilidade;
+	Servico servico;
 
-	public ServicoColetado(String nome, String disponibilidade) {
-		this.nome = nome;
+//	public ServicoColetado(String nome, String disponibilidade) {
+//		this.nome = nome;
+//		this.disponibilidade = disponibilidade;
+//	}
+	public ServicoColetado(String disponibilidade, Servico servico) {
 		this.disponibilidade = disponibilidade;
+		this.servico = servico;
 	}
 
-	public String getNome() {
-		return nome;
+	public Servico getServico() {
+		return servico;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setServico(Servico servico) {
+		this.servico = servico;
 	}
 
 	public String getDisponibilidade() {
@@ -33,7 +37,7 @@ public class ServicoColetado {
 
 	@Override
 	public String toString() {
-		return "Servico{" + "nome=" + nome + ", disponibilidade=" + disponibilidade + '}';
+		return "ServicoColetado{" + "disponibilidade=" + disponibilidade + ", servico=" + servico + '}';
 	}
 
 }

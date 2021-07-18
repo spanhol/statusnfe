@@ -1,7 +1,9 @@
 package testetecnico.spanhol.statusnfe;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jsoup.Jsoup;
@@ -9,6 +11,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import testetecnico.spanhol.statusnfe.modelo.Autorizador;
+import testetecnico.spanhol.statusnfe.modelo.Servico;
 import testetecnico.spanhol.statusnfe.modelo.ServicoColetado;
 
 /**
@@ -22,21 +25,23 @@ public class ColetorDeStatusNFE {
 	private static final String TEXTO_BOLA_VERMELHA = "imagens/bola_vermelho_G.png";
 
 	ArrayList<Autorizador> autorizadores;
-	ArrayList<String> listaDeServicos;
+	ArrayList<Servico> listaDeServicos;
 
-	public ColetorDeStatusNFE() {
+	public ColetorDeStatusNFE(Iterable<Servico> servicos) {
 		autorizadores = new ArrayList<>();
 		listaDeServicos = new ArrayList<>();
+		for (Servico servico : servicos) {
+			listaDeServicos.add(servico);
+		}
 	}
 
 	public void buscarDados() {
 		Document doc;
+		Timestamp now = new Timestamp(System.currentTimeMillis());
 		try {
 			doc = Jsoup.connect("http://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx").get();
-			System.out.println(doc.title());
 			Element table = doc.selectFirst("#ctl00_ContentPlaceHolder1_gdvDisponibilidade2");
 
-//			System.out.println(table.toString() + "\n\n------\n\n");
 			boolean headerTabela = true;
 
 			Autorizador atual = null;
@@ -47,13 +52,21 @@ public class ColetorDeStatusNFE {
 					for (Element th : ths) {
 						String texto = th.text();
 						if (texto.compareTo("Autorizador") != 0 && texto.compareTo("Tempo Médio") != 0) {
-							listaDeServicos.add(texto);
+							boolean encontrado = false;
+							for (Servico serv : listaDeServicos) {
+								if (serv.getNome().compareTo(texto) == 0) {
+									encontrado = true;
+								}
+							}
+							if (!encontrado) {
+								listaDeServicos.add(new Servico(texto));
+							}
 						}
 					}
 					headerTabela = false;
 				} else {
 					String aut = e.getElementsByTag("td").first().text();
-					atual = new Autorizador(aut);
+					atual = new Autorizador(aut, now);
 					autorizadores.add(atual);
 
 					Elements tds = e.getElementsByTag("td");
@@ -78,7 +91,7 @@ public class ColetorDeStatusNFE {
 						} else if (texto.isEmpty()) {
 							disponibilidade = ServicoColetado.BLANK;
 						}
-						ServicoColetado novoServico = new ServicoColetado(listaDeServicos.get(i), disponibilidade);
+						ServicoColetado novoServico = new ServicoColetado(disponibilidade, listaDeServicos.get(i));
 						atual.getServicos().add(novoServico);
 					}
 				}
@@ -90,6 +103,10 @@ public class ColetorDeStatusNFE {
 
 	public ArrayList<Autorizador> getAutorizadores() {
 		return autorizadores;
+	}
+
+	public ArrayList<Servico> getServicosColetados() {
+		return listaDeServicos;
 	}
 
 }

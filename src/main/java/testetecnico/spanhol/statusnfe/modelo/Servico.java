@@ -1,5 +1,6 @@
 package testetecnico.spanhol.statusnfe.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -26,17 +27,18 @@ import javax.persistence.Table;
 	@NamedQuery(name = "Servico.findByNome", query = "SELECT s FROM Servico s WHERE s.nome = :nome")})
 public class Servico implements Serializable {
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoId")
-	private Collection<StatusNFE> statusNFECollection;
+	private Collection<NFEStatus> statusNFECollection;
 
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "id")
 	private Integer id;
 	@Basic(optional = false)
-    @Column(name = "nome")
+	@Column(name = "nome")
 	private String nome;
 
 	public Servico() {
@@ -48,6 +50,10 @@ public class Servico implements Serializable {
 
 	public Servico(Integer id, String nome) {
 		this.id = id;
+		this.nome = nome;
+	}
+
+	public Servico(String nome) {
 		this.nome = nome;
 	}
 
@@ -87,17 +93,12 @@ public class Servico implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "testetecnico.spanhol.statusnfe.model.Servico[ id=" + id + " ]";
-	}
-
-	public Collection<StatusNFE> getStatusNFECollection() {
+	public Collection<NFEStatus> getStatusNFECollection() {
 		return statusNFECollection;
 	}
 
-	public void setStatusNFECollection(Collection<StatusNFE> statusNFECollection) {
+	public void setStatusNFECollection(Collection<NFEStatus> statusNFECollection) {
 		this.statusNFECollection = statusNFECollection;
 	}
-	
+
 }

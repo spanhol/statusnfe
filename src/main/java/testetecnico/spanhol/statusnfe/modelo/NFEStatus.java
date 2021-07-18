@@ -1,7 +1,7 @@
 package testetecnico.spanhol.statusnfe.modelo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,7 +18,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "statusnfe")
-public class StatusNFE implements Serializable {
+public class NFEStatus implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -37,25 +33,24 @@ public class StatusNFE implements Serializable {
 	@Column(name = "situacao")
 	private String situacao;
 	@Basic(optional = false)
-	@Column(name = "data_atualizacao")
-	@Temporal(TemporalType.DATE)
-	private Date dataAtualizacao;
+	@Column(name = "dt")
+	private Timestamp data;
 	@JoinColumn(name = "servico_id", referencedColumnName = "id")
 	@ManyToOne(optional = false)
 	private Servico servicoId;
 
-	public StatusNFE() {
+	public NFEStatus() {
 	}
 
-	public StatusNFE(Integer id) {
+	public NFEStatus(Integer id) {
 		this.id = id;
 	}
 
-	public StatusNFE(Integer id, String autorizador, String situacao, Date dataAtualizacao) {
-		this.id = id;
+	public NFEStatus(String autorizador, String situacao, Timestamp data, Servico servicoId) {
 		this.autorizador = autorizador;
 		this.situacao = situacao;
-		this.dataAtualizacao = dataAtualizacao;
+		this.data = data;
+		this.servicoId = servicoId;
 	}
 
 	public Integer getId() {
@@ -82,20 +77,20 @@ public class StatusNFE implements Serializable {
 		this.situacao = situacao;
 	}
 
-	public Date getDataAtualizacao() {
-		return dataAtualizacao;
-	}
-
-	public void setDataAtualizacao(Date dataAtualizacao) {
-		this.dataAtualizacao = dataAtualizacao;
-	}
-
 	public Servico getServicoId() {
 		return servicoId;
 	}
 
 	public void setServicoId(Servico servicoId) {
 		this.servicoId = servicoId;
+	}
+
+	public Timestamp getData() {
+		return data;
+	}
+
+	public void setData(Timestamp data) {
+		this.data = data;
 	}
 
 	@Override
@@ -108,10 +103,10 @@ public class StatusNFE implements Serializable {
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof StatusNFE)) {
+		if (!(object instanceof NFEStatus)) {
 			return false;
 		}
-		StatusNFE other = (StatusNFE) object;
+		NFEStatus other = (NFEStatus) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
@@ -120,7 +115,7 @@ public class StatusNFE implements Serializable {
 
 	@Override
 	public String toString() {
-		return "testetecnico.spanhol.statusnfe.modelo.StatusNFE[ id=" + id + " ]";
+		return "NFEStatus{" + "id=" + id + ", autorizador=" + autorizador + ", situacao=" + situacao + ", servicoId=" + servicoId + '}';
 	}
 
 }
