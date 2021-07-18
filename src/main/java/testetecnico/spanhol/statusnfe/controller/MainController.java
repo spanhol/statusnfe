@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,24 +52,28 @@ public class MainController {
 		System.out.println(ResponseEntity.ok(status).toString());
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = "/atual")
 	public @ResponseBody
 	Iterable<NFEStatus> getStatusAtual() {
 		return nfeRepository.mostraAtual();
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = "/{autorizador}")
 	public @ResponseBody
 	Iterable<NFEStatus> getDoEstado(@PathVariable(value = "autorizador") String autorizador) {
 		return nfeRepository.mostraAtualDoEstado(autorizador);
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = "/indisponibilidade")
 	public @ResponseBody
 	String mostraMaiorIndisponibilidade() {
 		return nfeRepository.mostraMaiorIndisponibilidade();
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = "/atual/{de}/{ate}")
 	public @ResponseBody
 	List<NFEStatus> mostraMaiorIndisponibilidade(@PathVariable(value = "de") Timestamp de, @PathVariable(value = "ate") Timestamp ate) {
