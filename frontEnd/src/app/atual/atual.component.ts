@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { TableModule } from 'primeng/table';
 
 @Component({
 	selector: 'app-atual',
@@ -14,6 +15,7 @@ export class AtualComponent implements OnInit {
 	servicos = ["Autorizador"];
 	autorizadores = [];
 	grupos = [];
+	empty = ["value"];
 	destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(private dataService: DataService) { }

@@ -1,9 +1,14 @@
-<button routerLink="/atual">Atual</button>
-<button routerLink="/estado" [queryParams]="{estado: 'AM'}">Estado AM</button>
-<button routerLink="/estado" [queryParams]="{estado: 'PR'}">Estado PR</button>
-<button routerLink="/estado" [queryParams]="{estado: 'SP'}">Estado SP</button>
-<button routerLink="/pordata" [queryParams]="{estado: 'SP'}">Estado SP</button>
-<button routerLink="/pordata" [queryParams]="{de: '2021-07-17 00:00:00', ate: '2021-07-18 23:00:00'}">Por Data</button>
-<button routerLink="/indisponibilidade">Por indisponibilidade</button>
-
+<div class="espacamento-botao">
+	<button pButton routerLink="/atual" class="p-button-lg" label="Atual"></button>
+	<button pButton routerLink="/estado" [queryParams]="{estado: 'AM'}" class="p-button-lg"
+		label="Estado AM"></button>
+	<button pButton routerLink="/estado" [queryParams]="{estado: 'PR'}" class="p-button-lg"
+		label="Estado PR"></button>
+	<button pButton routerLink="/estado" [queryParams]="{estado: 'SP'}" class="p-button-lg"
+		label="Estado SP"></button>
+	<button pButton routerLink="/pordata" [queryParams]="{'de': '2021-07-17 00:00:00', 'ate': '2021-07-18 23:00:00'}"
+		class="p-button-lg" label="Por Data"></button>
+	<button pButton routerLink="/indisponibilidade" class="p-button-lg"
+		label="Por indisponibilidade"></button>
+</div>
 <router-outlet></router-outlet>

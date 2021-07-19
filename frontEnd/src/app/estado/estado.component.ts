@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { TableModule } from 'primeng/table';
 
 @Component({
 	selector: 'app-estado',
@@ -17,7 +18,8 @@ export class EstadoComponent implements OnInit {
 	grupos = [];
 	destroy$: Subject<boolean> = new Subject<boolean>();
 	estado;
-
+	empty = ["value"];
+	
 	constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
 	ngOnInit(): void {

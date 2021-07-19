@@ -9,6 +9,8 @@ import { AtualComponent } from './atual/atual.component';
 import { EstadoComponent } from './estado/estado.component';
 import { PordataComponent } from './pordata/pordata.component';
 import { IndisponibilidadeComponent } from './indisponibilidade/indisponibilidade.component';
+import { TableModule } from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
 
 
 
@@ -25,7 +27,9 @@ import { IndisponibilidadeComponent } from './indisponibilidade/indisponibilidad
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		HttpClientModule
+		HttpClientModule,
+		TableModule,
+		ButtonModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

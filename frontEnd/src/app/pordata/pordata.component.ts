@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { TableModule } from 'primeng/table';
 
 @Component({
 	selector: 'app-pordata',
@@ -18,6 +19,7 @@ export class PordataComponent implements OnInit {
 	destroy$: Subject<boolean> = new Subject<boolean>();
 	de;
 	ate;
+	empty = ["value"];
 
 	constructor(private dataService: DataService, private route: ActivatedRoute) { }
 

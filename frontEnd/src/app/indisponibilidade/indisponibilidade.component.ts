@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { TableModule } from 'primeng/table';
 
 @Component({
 	selector: 'app-indisponibilidade',
@@ -15,6 +16,7 @@ export class IndisponibilidadeComponent implements OnInit {
 	autorizadores = [];
 	grupos = [];
 	destroy$: Subject<boolean> = new Subject<boolean>();
+	empty = ["value"];
 
 	constructor(private dataService: DataService) { }
 

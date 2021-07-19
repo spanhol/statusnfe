@@ -1,9 +1,13 @@
-<table>
-	<tr>
-		<th *ngFor="let servico of servicos">{{servico}} </th>
-	</tr>
-	<tr *ngFor="let grupo of grupos">
-		<td> {{grupo.autorizador}}</td>
-		<td *ngFor="let status of grupo.status"><img src="{{status}}"/></td>
-	</tr>
-</table>
+<p-table class="table table-bordered" [value]="empty">
+	<ng-template pTemplate="header">
+		<tr>
+			<th *ngFor="let servico of servicos">{{servico}} </th>
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="body" let-emp>
+		<tr *ngFor="let grupo of grupos">
+			<td> {{grupo.autorizador}}</td>
+			<td *ngFor="let status of grupo.status"><img src="{{status}}" /></td>
+		</tr>
+	</ng-template>
+</p-table>
