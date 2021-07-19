@@ -1,0 +1,9 @@
+<button routerLink="/atual">Atual</button>
+<button routerLink="/estado" [queryParams]="{estado: 'AM'}">Estado AM</button>
+<button routerLink="/estado" [queryParams]="{estado: 'PR'}">Estado PR</button>
+<button routerLink="/estado" [queryParams]="{estado: 'SP'}">Estado SP</button>
+<button routerLink="/pordata" [queryParams]="{estado: 'SP'}">Estado SP</button>
+<button routerLink="/pordata" [queryParams]="{de: '2021-07-17 00:00:00', ate: '2021-07-18 23:00:00'}">Por Data</button>
+<button routerLink="/indisponibilidade">Por indisponibilidade</button>
+
+<router-outlet></router-outlet>

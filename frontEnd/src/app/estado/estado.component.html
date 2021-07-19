@@ -1,0 +1,9 @@
+<table>
+	<tr>
+		<th *ngFor="let servico of servicos">{{servico}} </th>
+	</tr>
+	<tr *ngFor="let grupo of grupos">
+		<td> {{grupo.autorizador}}</td>
+		<td *ngFor="let status of grupo.status"><img src="{{status}}"/></td>
+	</tr>
+</table>
